@@ -106,9 +106,11 @@ const Hero = () => {
       >
 				<div>
 					<div className='mask-clip-path absolute-center absolute text-black z-50 cursor-pointer overflow-hidden rounded-lg'>
+            
 						<div 
 							onClick={handleMiniVideoClick} 
-							className="origin-center scale-50 opacity-0 transition-all duration-500 hover:scale-100 hover:opacity-100">MiniVideoPlayer
+							className="origin-center scale-50 opacity-0 transition-all duration-500 hover:scale-100 hover:opacity-100">
+              
 							<video
 								loop
 								ref={nextVideoRef}
