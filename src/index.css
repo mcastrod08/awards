@@ -65,6 +65,19 @@
     font-family: "zentry";
   }
 
+  .card-title {
+    font-family: "zentry";
+  }
+
+  .card-tilt_1 {
+    @apply relative col-span-2 md:col-span-1 overflow-hidden rounded-md transition-transform duration-300 ease-out;
+  }
+
+  .card-tilt_2 {
+    @apply relative col-span-1 row-span-1 overflow-hidden rounded-md transition-transform duration-300 ease-out;
+  }
+  
+
   
   
   .about-subtext {
@@ -92,6 +105,10 @@
 
   .floating-nav {
     @apply bg-black rounded-lg border;
+  }
+
+  .card-title {
+    @apply uppercase md:text-6xl text-4xl font-black
   }
 }
 body {
@@ -236,3 +253,4 @@ p {
     opacity: 0.8;
   }
 }
+
