@@ -51,6 +51,10 @@
     font-feature-settings: "ss01" on;
   }
 
+  .special-font {
+    font-family: "zentry";
+  }
+
   
 
   .hero-heading {
@@ -61,9 +65,7 @@
     font-family: "zentry";
   }
 
-  .about-heading {
-    font-family: "zentry";
-  }
+  
   
   .about-subtext {
     @apply absolute bottom-[-80dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center text-lg md:max-w-[34rem];
@@ -71,6 +73,17 @@
 
   .about-image {
     @apply absolute left-1/2 top-0 z-20 h-[60vh] w-96 origin-center -translate-x-1/2 overflow-hidden rounded-3xl md:w-[30vw];
+  }
+
+  .animated-title {
+    @apply flex flex-col gap-1 text-7xl uppercase leading-[.8] text-white sm:px-32 md:text-[6rem];
+  }
+
+  .animated-word {
+    @apply opacity-0;
+    transform: translate3d(10px, 51px, -60px) rotateY(60deg) rotateX(-40deg);
+    transform-origin: 50% 50% -150px !important;
+    will-change: opacity, transform;
   }
 }
 body {
