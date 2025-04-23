@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Button from './Button';
 import { TiLocationArrow } from 'react-icons/ti';
+import { useWindowScroll } from 'react-use';
+import gsap from 'gsap';
 
 const navItems = ['Nexus', 'Vault', 'Prologue', 'About', 'Contact'];
 const Navbar = () => {
@@ -9,6 +11,10 @@ const Navbar = () => {
 
   const [isIndicatorActive,setIsIndicatorActive] = useState(false);
 
+  //scroll
+  const [lastScrollY, setLastScrollY] = useState();
+  const [isNavVisible, setIsNavVisible] = useState(true)
+
 
   const navContainerRef = useRef(null);
   const audioElementRef = useRef(null);
@@ -16,7 +22,7 @@ const Navbar = () => {
   const toggleAudioIndicator = () => {
     setIsAudioPlaying((prev) => !prev)
     setIsIndicatorActive((prev) => !prev);
-  }
+  };
 
   useEffect(() => {
     if(isAudioPlaying) {
@@ -24,9 +30,38 @@ const Navbar = () => {
     } else {
       audioElementRef.current.pause();
     }
-  }, []);
+  }, [isAudioPlaying]);
 
+  //Scroll
+  const { y: currentScrollY } = useWindowScroll();
+
+  useEffect(() => {
+    if(currentScrollY===0) {
+      setIsNavVisible(true);
+      navContainerRef.current.classList.remove('floating-nav')
+    } else if(currentScrollY>lastScrollY){
+        setIsNavVisible(false);
+        navContainerRef.current.classList.add('floating-nav')
+      } else if(currentScrollY < lastScrollY) {
+        setIsNavVisible(true)
+        navContainerRef.current.classList.add('floating-nav')
+      }
+    
+    setLastScrollY(currentScrollY)
   
+    
+  }, [currentScrollY, lastScrollY]);
+
+  useEffect(() => {
+    gsap.to(navContainerRef.current, {
+      y: isNavVisible ? 0: -100,
+      opacity: isNavVisible ? 1 : 0,
+      duration: 0.2,
+    })
+  }, [isNavVisible])
+  
+  
+
   return (
     <div ref={navContainerRef} className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6">
       <header className="absolute top-1/2 w-full -translate-y-1/2">
@@ -52,7 +87,7 @@ const Navbar = () => {
             </div>
             
             <button 
-              className="ml-10 flex items-center space-x-0.5" 
+              className="ml-10 flex items-center space-x-0.5 cursor-pointer" 
               onClick={toggleAudioIndicator}
             >
               <audio 
