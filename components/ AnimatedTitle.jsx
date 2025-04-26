@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const  AnimatedTitle = ({title, containerClass}) => {
+const  AnimatedTitle = ({title, containerClass, color}) => {
 
 	const containerRef = useRef(null);
 	
@@ -45,7 +45,7 @@ const  AnimatedTitle = ({title, containerClass}) => {
           {line.split(" ").map((word, idx) => (
             <span
               key={idx}
-              className="animated-word special-font text-black"
+              className={`animated-word special-font ${color}`}
               dangerouslySetInnerHTML={{ __html: word }}
             />
           ))}
