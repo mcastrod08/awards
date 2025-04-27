@@ -28,7 +28,7 @@ const Contact = () => {
             Le<b>t</b>'s b<b>u</b>ild <br/>tog<b>e</b>ther
           </p>
           <a href="mailto:mcastrod08@gmail.com">
-          <Button title="Contact me" containerClass="mt-10 cursor-pointer" />
+            <Button title="Contact me" containerClass="mt-10 cursor-pointer" />
           </a>
           
         </div>
