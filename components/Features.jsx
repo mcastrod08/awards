@@ -67,7 +67,7 @@ const Card = ({src, title, description }) => {
 
 const Features = () => {
   return (
-    <section className="bg-black pb-52">
+    <section className="bg-black pb-52" id="features">
       <div className="container mx-auto px-3 md:px-10">
         <div className="px-5 py-32">
           <p className="text-lg text-blue-1">
